@@ -9,25 +9,25 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 public class SimpleMotorSubsystem extends SubsystemBase {
   WPI_TalonSRX _motor;
-  float max_forward_speed, max_backward_speed;
+  float forward_speed, backward_speed;
   public SimpleMotorSubsystem(int motorID, float maxSpeed) {
     _motor = new WPI_TalonSRX(motorID);
-    max_forward_speed = maxSpeed;
-    max_backward_speed = maxSpeed;
+    forward_speed = maxSpeed;
+    backward_speed = maxSpeed;
   }
-  public SimpleMotorSubsystem(int motorID, float maxForwardSpeed, float maxBackwardSpeed)
+  public SimpleMotorSubsystem(int motorID, float forwardSpeed, float backwardSpeed)
   {
     _motor = new WPI_TalonSRX(motorID);
-    max_forward_speed = maxForwardSpeed;
-    max_backward_speed = maxBackwardSpeed;
+    forward_speed = forwardSpeed;
+    backward_speed = backwardSpeed;
   }
   public void rotateForward()
   {
-    _motor.set(max_forward_speed);
+    _motor.set(forward_speed);
   }
   public void rotateBackward()
   {
-    _motor.set(max_backward_speed);
+    _motor.set(backward_speed);
   }
   public void stop()
   {
