@@ -19,4 +19,6 @@ public final class Constants {
   }
   public static class buttonIDs{
   }
+
+  public static final double SENSITIVITY = 0.1;
 }

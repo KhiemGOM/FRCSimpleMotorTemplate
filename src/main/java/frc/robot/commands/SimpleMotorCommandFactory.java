@@ -4,10 +4,13 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.StartEndCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.subsystems.SimpleMotorSubsystem;
+import static frc.robot.Constants.*;
 
 public class SimpleMotorCommandFactory {
   SimpleMotorSubsystem _subsys;
@@ -32,4 +35,17 @@ public class SimpleMotorCommandFactory {
     forwardButton.whileTrue(rotateForwardCommand());
     backwardButton.whileTrue(rotateBackwardCommand());
   }
+  private boolean isNoise(double a)
+  {
+    return Math.abs(a) < SENSITIVITY;
+  }
+  public Command bindAxis (Joystick joystick, int ID)
+  {
+    return new RunCommand(() -> {
+      double axis = joystick.getRawAxis(ID);
+      if (isNoise(axis))
+        axis = 0;
+      _subsys.set(axis);
+    }, _subsys);
+  } 
 }

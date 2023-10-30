@@ -29,9 +29,15 @@ public class SimpleMotorSubsystem extends SubsystemBase {
   {
     _motor.set(backward_speed);
   }
+
   public void stop()
   {
     _motor.set(0);
+  }
+
+  public void set(double speed)
+  {
+    _motor.set(speed);
   }
 
   @Override
