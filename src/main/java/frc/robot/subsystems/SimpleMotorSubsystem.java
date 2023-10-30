@@ -21,6 +21,10 @@ public class SimpleMotorSubsystem extends SubsystemBase {
     forward_speed = forwardSpeed;
     backward_speed = backwardSpeed;
   }
+  public WPI_TalonSRX getMotor ()
+  {
+    return _motor;
+  }
   public void rotateForward()
   {
     _motor.set(forward_speed);
@@ -42,7 +46,7 @@ public class SimpleMotorSubsystem extends SubsystemBase {
   }
   public void set(double speed)
   {
-    _motor.set(clamp(speed, backward_speed, forward_speed));
+    _motor.set(clamp(speed, -backward_speed, forward_speed));
   }
 
   @Override
