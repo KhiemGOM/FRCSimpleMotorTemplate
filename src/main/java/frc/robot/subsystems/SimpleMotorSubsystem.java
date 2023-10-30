@@ -9,13 +9,13 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 public class SimpleMotorSubsystem extends SubsystemBase {
   WPI_TalonSRX _motor;
-  float forward_speed, backward_speed;
-  public SimpleMotorSubsystem(int motorID, float maxSpeed) {
+  double forward_speed, backward_speed;
+  public SimpleMotorSubsystem(int motorID, double maxSpeed) {
     _motor = new WPI_TalonSRX(motorID);
     forward_speed = maxSpeed;
     backward_speed = maxSpeed;
   }
-  public SimpleMotorSubsystem(int motorID, float forwardSpeed, float backwardSpeed)
+  public SimpleMotorSubsystem(int motorID, double forwardSpeed, double backwardSpeed)
   {
     _motor = new WPI_TalonSRX(motorID);
     forward_speed = forwardSpeed;
