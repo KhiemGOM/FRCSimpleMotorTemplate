@@ -34,10 +34,15 @@ public class SimpleMotorSubsystem extends SubsystemBase {
   {
     _motor.set(0);
   }
-
+  private double clamp (double a, double min, double max)
+  {
+    if (a < min) a = min;
+    if (a > max) a = max;
+    return a;
+  }
   public void set(double speed)
   {
-    _motor.set(speed);
+    _motor.set(clamp(speed, backward_speed, forward_speed));
   }
 
   @Override
